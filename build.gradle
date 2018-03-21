@@ -1,5 +1,9 @@
 apply plugin : 'cpp' 
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.6'
+}
+
 model { 
     components {
         main(NativeExecutableSpec)   
