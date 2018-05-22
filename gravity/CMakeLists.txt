@@ -1,7 +1,4 @@
-cmake_minimum_required (VERSION 2.6)
-project (gravity)
-# The version number.
-set (gravity_VERSION_MAJOR 1)
-set (gravity_VERSION_MINOR 0)
-
-add_executable(gravity tutorial.cpp)
+cmake_minimum_required(VERSION 3.0)
+project(gravity)
+add_executable(gravity main.cpp)
+install(TARGETS gravity DESTINATION bin)
