@@ -1,0 +1,8 @@
+#ifndef SOLVERCONFIG_H
+#define SOLVERCONFIG_H
+
+// the configured options and settings for Tutorial
+#define solver_VERSION_MAJOR @solver_VERSION_MAJOR@
+#define solver_VERSION_MINOR @solver_VERSION_MINOR@
+
+#endif

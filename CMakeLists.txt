@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.11)
 project(gravity)
 
 set (gravity_VERSION_MAJOR 1)
@@ -14,6 +14,12 @@ configure_file (
 # add the binary tree to the search path for include files
 # so that we will find gravityConfig.h
 include_directories("${PROJECT_BINARY_DIR}")
+include_directories ("${PROJECT_SOURCE_DIR}/solver")
+add_subdirectory (solver)
 
 add_executable(gravity main.cpp)
+
+target_link_libraries (gravity solver)
+
 install(TARGETS gravity DESTINATION bin)
+install(FILES "${PROJECT_BINARY_DIR}/gravityConfig.h" DESTINATION include)
