@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     ui \
-    solver
+    solver \
+    utils
