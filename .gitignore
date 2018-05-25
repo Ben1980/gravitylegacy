@@ -1,4 +1,4 @@
-# Created by https://www.gitignore.io/api/c++,visualstudio
+# Created by https://www.gitignore.io/api/qt,c++,visualstudio
 
 ### C++ ###
 # Prerequisites
@@ -33,6 +33,38 @@
 *.exe
 *.out
 *.app
+
+### Qt ###
+# C++ objects and libs
+
+
+# Qt-es
+
+/.qmake.cache
+/.qmake.stash
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+Makefile*
+*build-*
+
+# QtCreator
+
+*.autosave
+
+# QtCtreator Qml
+*.qmlproject.user
+*.qmlproject.user.*
+
+# QtCtreator CMake
+CMakeLists.txt.user*
+
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -329,4 +361,4 @@ __pycache__/
 # should be stored in the .pubxml.user file.
 
 
-# End of https://www.gitignore.io/api/c++,visualstudio
+# End of https://www.gitignore.io/api/qt,c++,visualstudio
