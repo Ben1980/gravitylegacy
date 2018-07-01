@@ -1,9 +1,10 @@
 #include "gravityConfig.h"
 #include "solver/solver.h"
+#include "solver/euler.h"
 #include <cstdlib>
 
 int main(int argc, char *argv[]) {
-	printHelloWorld();
+	Solver *solver = new Euler();
 
 	system("pause");
 	return 0;

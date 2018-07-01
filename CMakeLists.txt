@@ -15,11 +15,13 @@ configure_file (
 # so that we will find gravityConfig.h
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories ("${PROJECT_SOURCE_DIR}/solver")
-add_subdirectory (solver)
+add_subdirectory(solver)
 
 add_executable(gravity main.cpp)
 
-target_link_libraries (gravity solver)
+target_link_libraries(gravity solver)
 
 install(TARGETS gravity DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/gravityConfig.h" DESTINATION include)
+
+target_compile_features(gravity PUBLIC cxx_std_17)
