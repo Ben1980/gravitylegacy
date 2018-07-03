@@ -1,8 +1,0 @@
-#ifndef GRAVITYCONFIG_H
-#define GRAVITYCONFIG_H
-
-// the configured options and settings for Tutorial
-#define gravity_VERSION_MAJOR @gravity_VERSION_MAJOR@
-#define gravity_VERSION_MINOR @gravity_VERSION_MINOR@
-
-#endif
