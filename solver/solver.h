@@ -5,9 +5,8 @@
 
 class SOLVERSHARED_EXPORT Solver
 {
-
 public:
-    Solver();
+    virtual void solve() const = 0;
 };
 
 #endif // SOLVER_H
