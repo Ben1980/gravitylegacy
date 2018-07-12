@@ -23,7 +23,8 @@ SOURCES += \
         utils.cpp
 
 HEADERS += \
-        utils.h
+        utils.h \
+    particles.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
