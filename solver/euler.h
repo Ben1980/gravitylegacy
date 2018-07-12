@@ -2,6 +2,7 @@
 #define EULER_H
 
 #include "solver_global.h"
+#include "solver.h"
 
 class SOLVERSHARED_EXPORT Euler : public Solver
 {

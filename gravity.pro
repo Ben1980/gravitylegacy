@@ -3,4 +3,7 @@ TEMPLATE = subdirs
 SUBDIRS += \
     gui \
     solver \
-    utils
+    utils \
+    solverTest \
+    solverBenchmark \
+    utilsTest
