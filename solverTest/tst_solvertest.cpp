@@ -11,7 +11,6 @@ public:
 private Q_SLOTS:
     void initTestCase();
     void cleanupTestCase();
-    void testCase1_data();
     void testCase1();
 };
 
@@ -27,15 +26,9 @@ void SolverTest::cleanupTestCase()
 {
 }
 
-void SolverTest::testCase1_data()
-{
-    QTest::addColumn<QString>("data");
-    QTest::newRow("0") << QString();
-}
-
 void SolverTest::testCase1()
 {
-    QFETCH(QString, data);
+    //QFETCH(QString, data);
     QVERIFY2(true, "Failure");
 }
 
