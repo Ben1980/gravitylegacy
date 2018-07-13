@@ -18,7 +18,7 @@ private Q_SLOTS:
     void testTwoStillStandingParticlesXPosition();
 
 private:
-//    ParticleBuilder builder;
+    //ParticleBuilder builder;
 //    std::unique_ptr<Particles> particles;
 };
 
