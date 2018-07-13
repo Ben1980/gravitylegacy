@@ -38,6 +38,10 @@ void UtilsTest::testParticleBuilderWithTwoParticles()
     builder->setPosition(0.5, 0.5)->addParticle(particles);
 
     QVERIFY2(particles.getNumberOfParticles() == 2, "Number of particles generated is not two!");
+    QVERIFY2(particles.xPosition[0] == -0.5, "X Position of Particle 1 is wrong!");
+    QVERIFY2(particles.yPosition[0] == -0.5, "Y Position of Particle 1 is wrong!");
+    QVERIFY2(particles.xPosition[1] == 0.5, "X Position of Particle 2 is wrong!");
+    QVERIFY2(particles.yPosition[1] == 0.5, "Y Position of Particle 2 is wrong!");
 }
 
 QTEST_APPLESS_MAIN(UtilsTest)
