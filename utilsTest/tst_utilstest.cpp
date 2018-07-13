@@ -1,6 +1,10 @@
 #include <QString>
 #include <QtTest>
 
+#include "particles.h"
+#include "particlebuilder.h"
+#include "particlebuilderimpl.h"
+
 class UtilsTest : public QObject
 {
     Q_OBJECT
@@ -11,7 +15,7 @@ public:
 private Q_SLOTS:
     void initTestCase();
     void cleanupTestCase();
-    void testCase1();
+    void testParticleBuilderWithTwoParticles();
 };
 
 UtilsTest::UtilsTest()
@@ -26,10 +30,14 @@ void UtilsTest::cleanupTestCase()
 {
 }
 
-void UtilsTest::testCase1()
+void UtilsTest::testParticleBuilderWithTwoParticles()
 {
-    //QFETCH(QString, data);
-    QVERIFY2(true, "Failure");
+    ParticleBuilder *builder = new ParticleBuilderImpl();
+    Particles particles;
+    builder->setPosition(-0.5, -0.5)->addParticle(particles);
+    builder->setPosition(0.5, 0.5)->addParticle(particles);
+
+    QVERIFY2(particles.getNumberOfParticles() == 2, "Number of particles generated is not two!");
 }
 
 QTEST_APPLESS_MAIN(UtilsTest)
