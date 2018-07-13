@@ -7,6 +7,8 @@
 TARGET = solver
 TEMPLATE = lib
 
+CONFIG += c++14
+
 DEFINES += SOLVER_LIBRARY
 
 # The following define makes your compiler emit warnings if you use

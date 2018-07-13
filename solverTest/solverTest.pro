@@ -9,7 +9,8 @@ QT       += testlib
 QT       -= gui
 
 TARGET = tst_solvertest
-CONFIG   += console
+CONFIG   += console \
+            c++14
 CONFIG   -= app_bundle
 
 TEMPLATE = app
