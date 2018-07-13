@@ -2,14 +2,22 @@
 #define PARTICLES_H
 
 #include <cstddef>
+#include <vector>
 
 struct Particles
 {
+    std::vector<double> xPosition;
+    std::vector<double> yPosition;
+
     Particles() {}
 
-    size_t getNumberOfParticles()
+    size_t getNumberOfParticles() const
     {
-        return 0;
+        if(xPosition.size() != yPosition.size()) {
+            return -1;
+        }
+
+        return xPosition.size();
     }
 };
 

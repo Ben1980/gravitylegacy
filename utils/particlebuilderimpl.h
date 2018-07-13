@@ -12,6 +12,10 @@ public:
 
     ParticleBuilder * setPosition(double x, double y) override;
     void addParticle(Particles &particles) const override;
+
+private:
+    double xPosition;
+    double yPosition;
 };
 
 #endif // PARTICLEBUILDERIMPL_H
