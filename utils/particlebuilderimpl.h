@@ -16,13 +16,16 @@ public:
     ParticleBuilderImpl & operator=(ParticleBuilderImpl &&builder) = default;
 
     ParticleBuilder * setPosition(double x, double y) override;
-    virtual ParticleBuilder * setMass(double mass) override;
+    ParticleBuilder * setVelocity(double x, double y) override;
+    ParticleBuilder * setMass(double mass) override;
 
     void addParticle(Particles &particles) const override;
 
 private:
     double xPosition;
     double yPosition;
+    double xVelocity;
+    double yVelocity;
     double mass;
 };
 

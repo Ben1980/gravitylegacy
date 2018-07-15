@@ -38,16 +38,19 @@ void UtilsTest::testParticleBuilderWithTwoParticles()
 {
     std::unique_ptr<ParticleBuilder> builder = std::make_unique<ParticleBuilderImpl>();
     Particles particles;
-    builder->setPosition(-0.5, -0.5)->setMass(1e10)->addParticle(particles);
-    builder->setPosition(0.5, 0.5)->setMass(1e10)->addParticle(particles);
+    builder->setPosition(-0.5, -0.5)->setVelocity(0, 0)->setMass(1e10)->addParticle(particles);
+    builder->setPosition(0.5, 0.5)->setVelocity(0, 0)->setMass(1e10)->addParticle(particles);
 
-    QVERIFY2(particles.getNumberOfParticles() == 2, "Number of particles generated is not two!");
     QVERIFY2(resultIsValid<double>(-0.5, particles.xPosition[0], EPSILON), "X Position of Particle 1 is wrong!");
     QVERIFY2(resultIsValid<double>(-0.5, particles.yPosition[0], EPSILON), "Y Position of Particle 1 is wrong!");
+    QVERIFY2(resultIsValid<double>(0, particles.xVelocity[0], EPSILON), "X Velocity of Particle 1 is wrong!");
+    QVERIFY2(resultIsValid<double>(0, particles.yVelocity[0], EPSILON), "Y Velocity of Particle 1 is wrong!");
     QVERIFY2(resultIsValid<double>(1e10, particles.mass[0], EPSILON), "Mass of Particle 1 is wrong!");
 
     QVERIFY2(resultIsValid<double>(0.5, particles.xPosition[1], EPSILON), "X Position of Particle 2 is wrong!");
     QVERIFY2(resultIsValid<double>(0.5, particles.yPosition[1], EPSILON), "Y Position of Particle 2 is wrong!");
+    QVERIFY2(resultIsValid<double>(0, particles.xVelocity[1], EPSILON), "X Velocity of Particle 2 is wrong!");
+    QVERIFY2(resultIsValid<double>(0, particles.yVelocity[1], EPSILON), "Y Velocity of Particle 2 is wrong!");
     QVERIFY2(resultIsValid<double>(1e10, particles.mass[1], EPSILON), "Mass of Particle 2 is wrong!");
 }
 

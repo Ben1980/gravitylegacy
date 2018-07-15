@@ -11,15 +11,17 @@ Particles Euler::solve(const Particles &particles, double deltaT) const
 {
     std::vector<double> xPosition(particles.xPosition.size());
     std::vector<double> yPosition(particles.yPosition.size());
+    std::vector<double> xVelocity(particles.xVelocity.size());
+    std::vector<double> yVelocity(particles.yVelocity.size());
 
     for(size_t i = 0; i < xPosition.size(); i++) {
         for(size_t j = 0; j < xPosition.size(); j++) {
             if(j != i) {
                 const double m = particles.mass[i]*particles.mass[j]/particles.mass[i];
                 const double xAcc = calculateAcceleration(particles.xPosition[i], particles.xPosition[j], m);
-                const double xVel = calculateVelocity(xAcc, deltaT);
+                xVelocity[i] = particles.xVelocity[i] + calculateVelocity(xAcc, deltaT);
 
-                xPosition[i] = particles.xPosition[i] + xVel*deltaT + 0.5*xAcc*deltaT*deltaT;
+                xPosition[i] = particles.xPosition[i] + xVelocity[i]*deltaT + 0.5*xAcc*deltaT*deltaT;
             }
         }
     }
@@ -29,9 +31,9 @@ Particles Euler::solve(const Particles &particles, double deltaT) const
             if(j != i) {
                 const double m = particles.mass[i]*particles.mass[j]/particles.mass[i];
                 const double yAcc = calculateAcceleration(particles.yPosition[i], particles.yPosition[j], m);
-                const double yVel = calculateVelocity(yAcc, deltaT);
+                yVelocity[i] = particles.yVelocity[i] + calculateVelocity(yAcc, deltaT);
 
-                yPosition[i] = particles.yPosition[i] + yVel*deltaT + 0.5*yAcc*deltaT*deltaT;
+                yPosition[i] = particles.yPosition[i] + yVelocity[i]*deltaT + 0.5*yAcc*deltaT*deltaT;
             }
         }
     }
@@ -39,6 +41,8 @@ Particles Euler::solve(const Particles &particles, double deltaT) const
     Particles solution;
     solution.xPosition = xPosition;
     solution.yPosition = yPosition;
+    solution.xVelocity = xVelocity;
+    solution.yVelocity = yVelocity;
     solution.mass = particles.mass;
 
     return solution;

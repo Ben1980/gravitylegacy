@@ -23,6 +23,8 @@ private Q_SLOTS:
     void cleanupTestCase();
     void testTwoStillStandingParticlesXPosition();
     void testTwoStillStandingParticlesYPosition();
+    void testTwoStillStandingParticlesXVelocity();
+    void testTwoStillStandingParticlesYVelocity();
 
 private:
     constexpr static const double DELTA_T = 1e-1;
@@ -91,6 +93,28 @@ void SolverTest::testTwoStillStandingParticlesYPosition()
 
     QVERIFY2(resultIsValid<double>(expectedYPositionParticle_1, solution.yPosition[0], EPSILON), "Particle 1 has wrong Y position");
     QVERIFY2(resultIsValid<double>(expectedYPositionParticle_2, solution.yPosition[1], EPSILON), "Particle 2 has wrong Y position");
+}
+
+void SolverTest::testTwoStillStandingParticlesXVelocity()
+{
+    const Particles solution = solver->solve(particles, DELTA_T);
+
+    const double expectedXVelocityParticle_1 = -0.0667408;
+    const double expectedXVelocityParticle_2 = 0.0667408;
+
+    QVERIFY2(resultIsValid<double>(expectedXVelocityParticle_1, solution.xVelocity[0], EPSILON), "Particle 1 has wrong X velocity");
+    QVERIFY2(resultIsValid<double>(expectedXVelocityParticle_2, solution.xVelocity[1], EPSILON), "Particle 2 has wrong X velocity");
+}
+
+void SolverTest::testTwoStillStandingParticlesYVelocity()
+{
+    const Particles solution = solver->solve(particles, DELTA_T);
+
+    const double expectedYVelocityParticle_1 = -0.0667408;
+    const double expectedYVelocityParticle_2 = 0.0667408;
+
+    QVERIFY2(resultIsValid<double>(expectedYVelocityParticle_1, solution.yVelocity[0], EPSILON), "Particle 1 has wrong Y velocity");
+    QVERIFY2(resultIsValid<double>(expectedYVelocityParticle_2, solution.yVelocity[1], EPSILON), "Particle 2 has wrong Y velocity");
 }
 
 QTEST_APPLESS_MAIN(SolverTest)
