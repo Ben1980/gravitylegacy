@@ -16,6 +16,10 @@ public:
     Solver & operator=(Solver &&solver) = default;
 
     virtual Particles solve(const Particles &particles, double deltaT) const = 0;
+
+private:
+    virtual double calculateVelocity(double acceleration, double deltaT) const = 0;
+    virtual double calculateAcceleration(double position1, double position2, double mass) const = 0;
 };
 
 #endif // SOLVER_H

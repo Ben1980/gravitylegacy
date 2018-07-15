@@ -17,6 +17,10 @@ public:
     Euler & operator=(Euler &&euler) = default;
 
     Particles solve(const Particles &particles, double deltaT) const override;
+
+private:
+    double calculateVelocity(double acceleration, double deltaT) const override;
+    double calculateAcceleration(double position1, double position2, double mass) const override;
 };
 
 #endif // EULER_H
