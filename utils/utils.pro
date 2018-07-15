@@ -26,7 +26,8 @@ SOURCES += \
 HEADERS += \
     particles.h \
     particlebuilder.h \
-    particlebuilderimpl.h
+    particlebuilderimpl.h \
+    constants.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
