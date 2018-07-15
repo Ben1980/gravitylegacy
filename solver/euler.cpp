@@ -1,11 +1,8 @@
 #include "euler.h"
 
-Euler::Euler()
+#include "particles.h"
+
+Particles Euler::solve(const Particles &particles, double deltaT) const
 {
-
-}
-
-void Euler::solve() const
-{
-
+    return{};
 }

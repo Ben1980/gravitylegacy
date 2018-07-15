@@ -4,12 +4,19 @@
 #include "solver_global.h"
 #include "solver.h"
 
+class Particles;
+
 class SOLVERSHARED_EXPORT Euler : public Solver
 {
 public:
-    Euler();
+    Euler() = default;
+    ~Euler() override = default;
+    Euler(const Euler &euler) = default;
+    Euler(Euler &&euler) = default;
+    Euler & operator=(const Euler &euler) = default;
+    Euler & operator=(Euler &&euler) = default;
 
-    void solve() const override;
+    Particles solve(const Particles &particles, double deltaT) const override;
 };
 
 #endif // EULER_H
