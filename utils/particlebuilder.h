@@ -6,7 +6,15 @@ struct Particles;
 class ParticleBuilder
 {
 public:
+    ParticleBuilder() = default;
+    virtual ~ParticleBuilder() = default;
+    ParticleBuilder(const ParticleBuilder &builder) = default;
+    ParticleBuilder(ParticleBuilder &&builder) = default;
+    ParticleBuilder & operator=(const ParticleBuilder &builder) = default;
+    ParticleBuilder & operator=(ParticleBuilder &&builder) = default;
+
     virtual ParticleBuilder * setPosition(double x, double y) = 0;
+    virtual ParticleBuilder * setMass(double mass) = 0;
     virtual void addParticle(Particles &particles) const = 0;
 };
 
