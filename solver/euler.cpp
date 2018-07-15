@@ -13,15 +13,17 @@ Particles Euler::solve(const Particles &particles, double deltaT) const
     std::vector<double> yPosition(particles.yPosition.size());
     std::vector<double> xVelocity(particles.xVelocity.size());
     std::vector<double> yVelocity(particles.yVelocity.size());
+    std::vector<double> xAcceleration(particles.xAcceleration.size());
+    std::vector<double> yAcceleration(particles.yAcceleration.size());
 
     for(size_t i = 0; i < xPosition.size(); i++) {
         for(size_t j = 0; j < xPosition.size(); j++) {
             if(j != i) {
                 const double m = particles.mass[i]*particles.mass[j]/particles.mass[i];
-                const double xAcc = calculateAcceleration(particles.xPosition[i], particles.xPosition[j], m);
-                xVelocity[i] = particles.xVelocity[i] + calculateVelocity(xAcc, deltaT);
+                xAcceleration[i] = particles.xAcceleration[i] + calculateAcceleration(particles.xPosition[i], particles.xPosition[j], m);
+                xVelocity[i] = particles.xVelocity[i] + calculateVelocity(xAcceleration[i], deltaT);
 
-                xPosition[i] = particles.xPosition[i] + xVelocity[i]*deltaT + 0.5*xAcc*deltaT*deltaT;
+                xPosition[i] = particles.xPosition[i] + xVelocity[i]*deltaT + 0.5*xAcceleration[i]*deltaT*deltaT;
             }
         }
     }
@@ -30,10 +32,10 @@ Particles Euler::solve(const Particles &particles, double deltaT) const
         for(size_t j = 0; j < yPosition.size(); j++) {
             if(j != i) {
                 const double m = particles.mass[i]*particles.mass[j]/particles.mass[i];
-                const double yAcc = calculateAcceleration(particles.yPosition[i], particles.yPosition[j], m);
-                yVelocity[i] = particles.yVelocity[i] + calculateVelocity(yAcc, deltaT);
+                yAcceleration[i] = particles.yAcceleration[i] + calculateAcceleration(particles.yPosition[i], particles.yPosition[j], m);
+                yVelocity[i] = particles.yVelocity[i] + calculateVelocity(yAcceleration[i], deltaT);
 
-                yPosition[i] = particles.yPosition[i] + yVelocity[i]*deltaT + 0.5*yAcc*deltaT*deltaT;
+                yPosition[i] = particles.yPosition[i] + yVelocity[i]*deltaT + 0.5*yAcceleration[i]*deltaT*deltaT;
             }
         }
     }
@@ -43,6 +45,8 @@ Particles Euler::solve(const Particles &particles, double deltaT) const
     solution.yPosition = yPosition;
     solution.xVelocity = xVelocity;
     solution.yVelocity = yVelocity;
+    solution.xAcceleration = xAcceleration;
+    solution.yAcceleration = yAcceleration;
     solution.mass = particles.mass;
 
     return solution;

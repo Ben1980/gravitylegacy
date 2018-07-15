@@ -15,6 +15,7 @@ public:
 
     virtual ParticleBuilder * setPosition(double x, double y) = 0;
     virtual ParticleBuilder * setVelocity(double x, double y) = 0;
+    virtual ParticleBuilder * setAcceleration(double x, double y) = 0;
     virtual ParticleBuilder * setMass(double mass) = 0;
     virtual void addParticle(Particles &particles) const = 0;
 };

@@ -10,6 +10,8 @@ struct Particles
     std::vector<double> yPosition;
     std::vector<double> xVelocity;
     std::vector<double> yVelocity;
+    std::vector<double> xAcceleration;
+    std::vector<double> yAcceleration;
     std::vector<double> mass;
 
     Particles() {}

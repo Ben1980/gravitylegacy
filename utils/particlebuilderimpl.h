@@ -17,6 +17,7 @@ public:
 
     ParticleBuilder * setPosition(double x, double y) override;
     ParticleBuilder * setVelocity(double x, double y) override;
+    ParticleBuilder * setAcceleration(double x, double y) override;
     ParticleBuilder * setMass(double mass) override;
 
     void addParticle(Particles &particles) const override;
@@ -26,6 +27,8 @@ private:
     double yPosition;
     double xVelocity;
     double yVelocity;
+    double xAcceleration;
+    double yAcceleration;
     double mass;
 };
 

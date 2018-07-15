@@ -22,6 +22,14 @@ ParticleBuilder * ParticleBuilderImpl::setVelocity(double x, double y)
     return this;
 }
 
+ParticleBuilder * ParticleBuilderImpl::setAcceleration(double x, double y)
+{
+    xAcceleration = x;
+    yAcceleration = y;
+
+    return this;
+}
+
 ParticleBuilder * ParticleBuilderImpl::setMass(double mass)
 {
     this->mass = mass;
@@ -35,5 +43,7 @@ void ParticleBuilderImpl::addParticle(Particles &particles) const
     particles.yPosition.push_back(yPosition);
     particles.xVelocity.push_back(xVelocity);
     particles.yVelocity.push_back(yVelocity);
+    particles.xAcceleration.push_back(xAcceleration);
+    particles.yAcceleration.push_back(yAcceleration);
     particles.mass.push_back(mass);
 }
