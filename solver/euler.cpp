@@ -1,6 +1,7 @@
 #include "euler.h"
 
 #include <cmath>
+#include "omp.h"
 
 #include "particles.h"
 #include "constants.h"
@@ -18,6 +19,7 @@ Particles Euler::solve(const Particles &particles, double deltaT) const
     std::vector<double> xAcceleration(numberOfParticles);
     std::vector<double> yAcceleration(numberOfParticles);
 
+#pragma omp parallel for
     for(size_t i = 0; i < numberOfParticles; i++) {
         for(size_t j = 0; j < numberOfParticles; j++) {
             if(j != i) {

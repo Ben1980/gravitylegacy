@@ -9,6 +9,11 @@ TEMPLATE = lib
 
 CONFIG += c++14
 
+QMAKE_CXXFLAGS += -fopenmp
+QMAKE_LFLAGS += -fopenmp
+
+LIBS += -lgomp -lpthread
+
 DEFINES += SOLVER_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
