@@ -20,14 +20,14 @@ Particles Euler::solve(const Particles &particles, double deltaT) const
         for(size_t j = 0; j < xPosition.size(); j++) {
             if(j != i) {
                 const double m = particles.mass[i]*particles.mass[j]/particles.mass[i];
-                xAcceleration[i] = particles.xAcceleration[i] + calculateAcceleration(particles.xPosition[i], particles.xPosition[j], m);
-                xVelocity[i] = particles.xVelocity[i] + calculateVelocity(xAcceleration[i], deltaT);
 
+                xAcceleration[i] = particles.xAcceleration[i] + calculateAcceleration(particles.xPosition[i], particles.xPosition[j], m);
+                yAcceleration[i] = particles.yAcceleration[i] + calculateAcceleration(particles.yPosition[i], particles.yPosition[j], m);
+
+                xVelocity[i] = particles.xVelocity[i] + calculateVelocity(xAcceleration[i], deltaT);
                 xPosition[i] = particles.xPosition[i] + xVelocity[i]*deltaT + 0.5*xAcceleration[i]*deltaT*deltaT;
 
-                yAcceleration[i] = particles.yAcceleration[i] + calculateAcceleration(particles.yPosition[i], particles.yPosition[j], m);
                 yVelocity[i] = particles.yVelocity[i] + calculateVelocity(yAcceleration[i], deltaT);
-
                 yPosition[i] = particles.yPosition[i] + yVelocity[i]*deltaT + 0.5*yAcceleration[i]*deltaT*deltaT;
             }
         }

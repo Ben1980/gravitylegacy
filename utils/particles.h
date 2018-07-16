@@ -13,8 +13,6 @@ struct Particles
     std::vector<double> xAcceleration;
     std::vector<double> yAcceleration;
     std::vector<double> mass;
-
-    Particles() {}
 };
 
 #endif // PARTICLES_H
