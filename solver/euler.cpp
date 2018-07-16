@@ -9,15 +9,17 @@ using namespace Constants;
 
 Particles Euler::solve(const Particles &particles, double deltaT) const
 {
-    std::vector<double> xPosition(particles.xPosition.size());
-    std::vector<double> yPosition(particles.yPosition.size());
-    std::vector<double> xVelocity(particles.xVelocity.size());
-    std::vector<double> yVelocity(particles.yVelocity.size());
-    std::vector<double> xAcceleration(particles.xAcceleration.size());
-    std::vector<double> yAcceleration(particles.yAcceleration.size());
+    const size_t numberOfParticles = particles.xPosition.size();
 
-    for(size_t i = 0; i < xPosition.size(); i++) {
-        for(size_t j = 0; j < xPosition.size(); j++) {
+    std::vector<double> xPosition(numberOfParticles);
+    std::vector<double> yPosition(numberOfParticles);
+    std::vector<double> xVelocity(numberOfParticles);
+    std::vector<double> yVelocity(numberOfParticles);
+    std::vector<double> xAcceleration(numberOfParticles);
+    std::vector<double> yAcceleration(numberOfParticles);
+
+    for(size_t i = 0; i < numberOfParticles; i++) {
+        for(size_t j = 0; j < numberOfParticles; j++) {
             if(j != i) {
                 const double m = particles.mass[i]*particles.mass[j]/particles.mass[i];
 
@@ -33,16 +35,13 @@ Particles Euler::solve(const Particles &particles, double deltaT) const
         }
     }
 
-    Particles solution;
-    solution.xPosition = xPosition;
-    solution.yPosition = yPosition;
-    solution.xVelocity = xVelocity;
-    solution.yVelocity = yVelocity;
-    solution.xAcceleration = xAcceleration;
-    solution.yAcceleration = yAcceleration;
-    solution.mass = particles.mass;
-
-    return solution;
+    return { xPosition,
+             yPosition,
+             xVelocity,
+             yVelocity,
+             xAcceleration,
+             yAcceleration,
+             particles.mass };
 }
 
 double Euler::calculateVelocity(double acceleration, double deltaT) const
